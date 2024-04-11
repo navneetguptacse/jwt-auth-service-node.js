@@ -39,7 +39,7 @@ This is a Node.js project that demonstrates how to implement JWT (JSON Web Token
 The project uses a `.env` file to store configuration variables. Make sure to create a `.env` file in the root directory of the project and provide the following variables:
 
 ```bash
-MONGO_URI = mongodb://0.0.0.0:27017
+MONGO_URI = mongodb://localhost:27017
 PORT = 3000
 S3_BUCKET="YOURS3BUCKET"
 SECRET_KEY="YOURSECRETKEYGOESHERE"
