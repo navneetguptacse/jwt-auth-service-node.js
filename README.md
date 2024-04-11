@@ -1,4 +1,4 @@
-# node-express-jwt-auth
+# 🔐 node-express-jwt-auth
 
 This is a Node.js project that demonstrates how to implement JWT (JSON Web Token) authentication with Express.js.
 
