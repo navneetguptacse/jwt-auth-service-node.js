@@ -4,35 +4,35 @@ This is a Node.js project that demonstrates how to implement JWT (JSON Web Token
 
 ## Installation
 
-1. Clone the repository:
+Clone the repository:
 
-   ```bash
-   git clone https://github.com/navneetguptacse/node-express-jwt-auth.git
-   ```
+```bash
+git clone https://github.com/navneetguptacse/node-express-jwt-auth.git
+```
 
-2. Navigate to the project directory:
+Navigate to the project directory:
 
-   ```bash
-   cd node-express-jwt-auth
-   ```
+```bash
+cd node-express-jwt-auth
+```
 
-3. Install the dependencies:
+Install the dependencies:
 
-   ```bash
-   npm install
-   ```
+```bash
+npm install
+```
 
 ## Usage
 
-1. Start the server:
+Start the server:
 
-   ```bash
-   npm start
-   ```
+```bash
+npm start
+```
 
-2. Open your web browser and navigate to `http://localhost:3000`.
+Open your web browser and navigate to `http://localhost:3000`.
 
-3. You can now register a new user, login with your credentials, and access protected routes.
+You can now register a new user, login with your credentials, and access protected routes.
 
 ## Configuration
 
