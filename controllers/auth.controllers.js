@@ -48,8 +48,7 @@ const postSignUpUser = async (req, res) => {
     const { email, password } = req.body;
     try {
         const user = await User.create({ email, password });
-        /* this -refers to the user being created and password being hashed */
-        /* doc -refers to the user that was created and saved to db */
+        /* this -refers to the user being created and password being hashed and saved into database */
         res.status(201).json(user);
     } catch (err) {
         const errors = handleErrors(err);
