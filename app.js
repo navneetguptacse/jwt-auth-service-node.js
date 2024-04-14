@@ -1,20 +1,22 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const authRoutes = require("./routes/auth.route");
 
 const app = express();
 
-// middleware
+/* local middleware */
 app.use(express.static("public"));
+app.use(express.json());
 
-// view engine
+/* view engine */
 app.set("view engine", "ejs");
 
-// environment variables
+/* environment variables */
 const DB_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 3000;
 
-// database connection
+/* database connection */
 mongoose
   .connect(DB_URI, {
     useNewUrlParser: true,
@@ -28,6 +30,7 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-// routes
+/* routes */
 app.get("/", (req, res) => res.render("home"));
 app.get("/smoothies", (req, res) => res.render("smoothies"));
+app.use(authRoutes);
