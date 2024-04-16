@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const jwt = require("jsonwebtoken");
 
 const handleErrors = (err) => {
     console.log(err.message, err.code);
@@ -26,10 +27,16 @@ const handleErrors = (err) => {
     if (err.message === "incorrect password") {
         errors.password = "Password is incorrect";
     }
-
     return errors;
 }
 
+/* create token */
+const maxAge = 2 * 24 * 60 * 60;
+const createJwtToken = (id) => {
+    return jwt.sign({ id }, process.env.SECRET_KEY, { expiresIn: maxAge });
+}
+
+/* controller actions */
 const getLoginUser = (req, res) => {
     res.render("login");
 }
@@ -49,12 +56,14 @@ const postSignUpUser = async (req, res) => {
     try {
         const user = await User.create({ email, password });
         /* this -refers to the user being created and password being hashed and saved into database */
-        res.status(201).json(user);
+        const token = createJwtToken(user._id);
+        res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
+        res.status(201).json({ user: user._id });
+        console.log("User created successfully");
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
     }
-
 }
 
 module.exports = { getLoginUser, postLoginUser, getSignUpUser, postSignUpUser };
