@@ -39,4 +39,4 @@ app.get("/", (req, res) => res.render("home"));
 app.get("/smoothies", requireAuth, (req, res) => res.render("smoothies"));
 app.use(authRoutes);
 
-/* The following log-content is from  { ./middleware/auth.middleware } in line No. 13 and 33*/
+/* The following log-content is from { ./middleware/auth.middleware } in line No. 13 and 33 */

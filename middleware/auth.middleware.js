@@ -19,7 +19,7 @@ const requireAuth = (req, res, next) => {
     }
 }
 
-/* check current user every time when user jumps a new page */
+/* check current user every time when user jumps a new */
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
     /* check json web token exists and is it verified ? */
