@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  app:
+    image: navneetguptacse/apexnode
+    container_name: navneetguptacse_apexnode
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - NODE_ENV=development
