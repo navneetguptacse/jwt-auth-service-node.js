@@ -48,6 +48,7 @@ const postLoginUser = async (req, res) => {
         const token = createJwtToken(user._id);
         res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
         res.status(200).json({ user: user._id });
+        console.log("User logged in successfully");
     } catch (err) {
         const errors = handleErrors(err);
         res.status(400).json({ errors });
