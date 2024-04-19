@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/auth.route");
 const cookieParser = require("cookie-parser");
+const { requireAuth, checkUser } = require('./middleware/auth.middleware');
 
 const app = express();
 
@@ -33,6 +34,9 @@ mongoose
   .catch((err) => console.log(err));
 
 /* routes */
+app.get('*', checkUser);
 app.get("/", (req, res) => res.render("home"));
-app.get("/smoothies", (req, res) => res.render("smoothies"));
+app.get("/smoothies", requireAuth, (req, res) => res.render("smoothies"));
 app.use(authRoutes);
+
+/* The following log-content is from  { ./middleware/auth.middleware } in line No. 13 and 33*/
