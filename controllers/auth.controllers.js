@@ -41,17 +41,10 @@ const getLoginUser = (req, res) => {
     res.render("login");
 }
 
-const postLoginUser = async (req, res) => {
+const postLoginUser = (req, res) => {
     const { email, password } = req.body;
-    try {
-        const user = await User.login(email, password);
-        const token = createJwtToken(user._id);
-        res.cookie("jwt", token, { httpOnly: true, maxAge: maxAge * 1000 });
-        res.status(200).json({ user: user._id });
-    } catch (err) {
-        const errors = handleErrors(err);
-        res.status(400).json({ errors });
-    }
+    console.log(email, password);
+    res.send("user logged in");
 }
 
 const getSignUpUser = (req, res) => {
@@ -73,9 +66,4 @@ const postSignUpUser = async (req, res) => {
     }
 }
 
-const getLogoutUser = (req, res) => {
-    res.cookie("jwt", "", { maxAge: 1 });
-    res.redirect("/");
-}
-
-module.exports = { getLoginUser, postLoginUser, getSignUpUser, postSignUpUser, getLogoutUser };
+module.exports = { getLoginUser, postLoginUser, getSignUpUser, postSignUpUser };
